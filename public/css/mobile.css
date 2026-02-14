@@ -88,6 +88,21 @@ body {
 .btn-create:active {
   transform: scale(0.95);
 }
+.btn-login {
+  background: transparent;
+  color: var(--accent-gold);
+  padding: 6px 12px;
+  border-radius: var(--radius-md);
+  font-size: 13px;
+  font-weight: 500;
+  min-height: auto;
+  transition: all var(--transition-base);
+  border: none;
+  text-decoration: none;
+}
+.btn-login:active {
+  opacity: 0.7;
+}
 .btn-subscribe {
   background: var(--accent-gold);
   color: var(--navy-dark);
@@ -99,6 +114,7 @@ body {
   border: none;
   transition: all var(--transition-base);
   white-space: nowrap;
+  text-decoration: none;
 }
 .btn-subscribe:active {
   opacity: 0.85;
