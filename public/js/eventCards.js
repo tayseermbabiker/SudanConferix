@@ -87,6 +87,12 @@ function createEventCard(event) {
     content.appendChild(organizer);
   }
 
+  // View details hint
+  const detailsHint = document.createElement('p');
+  detailsHint.className = 'view-details-hint';
+  detailsHint.textContent = 'View details \u2192';
+  content.appendChild(detailsHint);
+
   // Join Event button
   const joinBtn = document.createElement('button');
   joinBtn.className = 'btn-primary btn-full';
