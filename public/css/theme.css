@@ -1,0 +1,78 @@
+/* Design Tokens & Theme Variables - Navy, Teal & Gold Professional */
+:root {
+  /* Primary Colors - Navy, Teal & Gold */
+  --navy-dark: #0B1426;
+  --navy-medium: #1C2333;
+  --charcoal: #2D3748;
+  --primary-teal: #2DD4BF;
+  --primary-navy: #1E3A5F;
+  --accent-gold: #D4A853;
+  --gold-light: #E8C87A;
+  --teal-dark: #1A9E8F;
+  --teal-glow: #5EEAD4;
+  --gold: #D4A853;
+
+  /* Neutral Colors */
+  --beige: #EFE6DE;
+  --grey-light: #F8FAFC;
+  --grey-medium: #E2E8F0;
+  --grey-dark: #475569;
+  --white: #FFFFFF;
+
+  /* Semantic Colors */
+  --success: #00875A;
+  --error: #DE350B;
+  --warning: #FF991F;
+
+  /* Text Colors */
+  --text-primary: #1E2A38;
+  --text-secondary: #4A4A4A;
+  --text-light: #FFFFFF;
+  --text-muted: #64748b;
+
+  /* Typography */
+  --font-serif: 'DM Serif Display', Georgia, serif;
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica', sans-serif;
+  --font-arabic: 'Noto Sans Arabic', 'Segoe UI', Tahoma, sans-serif;
+  --font-base: 16px;
+  --font-small: 14px;
+  --font-large: 18px;
+  --font-xlarge: 24px;
+  --font-xxlarge: 32px;
+  --font-hero: 40px;
+
+  /* Spacing Scale */
+  --space-xs: 4px;
+  --space-sm: 8px;
+  --space-md: 16px;
+  --space-lg: 24px;
+  --space-xl: 32px;
+  --space-xxl: 48px;
+
+  /* Border Radius */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-xl: 16px;
+
+  /* Shadows */
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.1);
+  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 10px 20px rgba(0, 0, 0, 0.15);
+
+  /* Touch Targets (WCAG 2.1 AA Compliance) */
+  --touch-target: 44px;
+
+  /* Transitions */
+  --transition-fast: 0.15s ease;
+  --transition-base: 0.2s ease;
+  --transition-slow: 0.3s ease;
+
+  /* Container */
+  --container-max: 1400px;
+}
+
+/* Font Family */
+body {
+  font-family: var(--font-sans);
+}

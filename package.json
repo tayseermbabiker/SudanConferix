@@ -1,0 +1,31 @@
+{
+  "name": "conferix-sudan",
+  "version": "1.0.0",
+  "description": "Conferix Impact — Free online events for Sudanese professionals",
+  "main": "index.js",
+  "scripts": {
+    "dev": "netlify dev",
+    "build": "echo 'No build step required - static site'",
+    "deploy": "netlify deploy --prod"
+  },
+  "keywords": [
+    "events",
+    "sudan",
+    "professional-events",
+    "online-events",
+    "community"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "@netlify/functions": "^2.8.2",
+    "airtable": "^0.12.2",
+    "resend": "^4.8.0"
+  },
+  "devDependencies": {
+    "netlify-cli": "^17.0.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}

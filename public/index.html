@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <base href="/sudan/">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Free online professional events for Sudanese professionals affected by war. Conferix Impact — community-driven events in Finance, Healthcare, Tech, Engineering & more.">
+    <meta name="theme-color" content="#0B1426">
+    <title>Conferix Impact | Free Online Events for Sudanese Professionals</title>
+
+    <!-- SEO Meta Tags -->
+    <meta name="keywords" content="Sudan events, Sudanese professionals, free online events, professional development Sudan, networking Sudan, tech events Sudan, healthcare events Sudan">
+    <meta name="author" content="Conferix">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://conferix.com/sudan/">
+
+    <!-- hreflang -->
+    <link rel="alternate" hreflang="en" href="https://conferix.com/sudan/">
+    <link rel="alternate" hreflang="ar" href="https://conferix.com/sudan/">
+    <link rel="alternate" hreflang="x-default" href="https://conferix.com/">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://conferix.com/sudan/">
+    <meta property="og:title" content="Conferix Impact | Free Online Events for Sudanese Professionals">
+    <meta property="og:site_name" content="Conferix Impact">
+    <meta property="og:description" content="Free online professional events for Sudanese professionals affected by war. Community-driven events in Finance, Healthcare, Tech, Engineering & more.">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://conferix.com/sudan/">
+    <meta name="twitter:title" content="Conferix Impact | Free Online Events for Sudanese Professionals">
+    <meta name="twitter:description" content="Free online professional events for Sudanese professionals affected by war. Community-driven events in Finance, Healthcare, Tech, Engineering & more.">
+
+    <!-- Schema.org JSON-LD -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "Conferix Impact — Sudan",
+        "description": "Free online professional events for Sudanese professionals",
+        "url": "https://conferix.com/sudan/"
+    }
+    </script>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+
+    <!-- Preconnect to external resources -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <!-- Google Fonts (+ Arabic font) -->
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter:wght@400;500;600;700&family=Noto+Sans+Arabic:wght@400;600;700&display=swap" rel="stylesheet">
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/theme.css">
+    <link rel="stylesheet" href="css/mobile.css">
+    <link rel="stylesheet" href="css/desktop.css">
+</head>
+<body>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <h1>Conferix <span class="logo-region">Impact</span></h1>
+                    <p class="tagline">Sudan — Free Online Events</p>
+                </div>
+                <div class="header-actions">
+                    <a href="submit.html" class="btn-create">+ Create Event</a>
+                    <a href="#newsletter" class="btn-subscribe">Subscribe</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section (Bilingual) -->
+    <section class="hero-section">
+        <div class="container">
+            <h2 class="hero-headline">Supporting Sudanese Professionals</h2>
+            <p class="hero-headline-ar">دعم المهنيين السودانيين في زمن الحرب</p>
+            <p class="hero-subtitle">Free online events created by the community, for the community. Workshops, webinars, and networking — all free, all online, for Sudanese professionals everywhere.</p>
+            <p class="hero-subtitle-ar">فعاليات مجانية عبر الإنترنت من المجتمع وللمجتمع. ورش عمل وندوات وفرص تواصل — مجانية بالكامل، للمهنيين السودانيين في كل مكان.</p>
+            <div class="hero-ctas">
+                <a href="submit.html" class="hero-cta-primary">Create an Event</a>
+                <a href="#newsletter" class="hero-cta-secondary">Subscribe for Alerts</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Filters Section (Sticky) -->
+    <section class="filters-section" id="filters">
+        <div class="container">
+            <div class="filter-chips">
+
+                <!-- Month Filter -->
+                <select id="filter-month" class="filter-chip" aria-label="Filter by month">
+                    <option value="">All Months</option>
+                </select>
+
+                <!-- Industry Filter (Multi-select) -->
+                <div class="multi-select" id="industry-select">
+                    <button type="button" class="filter-chip multi-select-btn" id="industry-btn">
+                        All Industries ▾
+                    </button>
+                    <div class="multi-select-dropdown" id="industry-dropdown">
+                        <label><input type="checkbox" value="Finance & Banking"> Finance & Banking</label>
+                        <label><input type="checkbox" value="Healthcare & Medical"> Healthcare & Medical</label>
+                        <label><input type="checkbox" value="Technology & IT"> Technology & IT</label>
+                        <label><input type="checkbox" value="Engineering"> Engineering</label>
+                        <label><input type="checkbox" value="Operations & Supply Chain"> Operations & Supply Chain</label>
+                        <label><input type="checkbox" value="HR & People Development"> HR & People Development</label>
+                        <label><input type="checkbox" value="Marketing"> Marketing</label>
+                    </div>
+                </div>
+
+                <!-- Clear Filters -->
+                <button id="clear-filters" class="btn-text">Clear All</button>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Events Container -->
+    <main class="events-container">
+        <div class="container">
+
+            <!-- Loading State -->
+            <div id="loading" class="loading">
+                <div class="loading-spinner"></div>
+                <p>Loading events...</p>
+            </div>
+
+            <!-- Events Grid -->
+            <div id="events-grid" class="events-grid">
+                <!-- Event cards populated by JavaScript -->
+            </div>
+
+            <!-- Empty State -->
+            <div id="empty-state" class="empty-state" style="display: none;">
+                <div class="empty-icon">📅</div>
+                <h3>No events yet</h3>
+                <p>Be the first to create an event for the Sudanese professional community.</p>
+                <a href="submit.html" class="btn-primary" style="display:inline-block;width:auto;padding:var(--space-md) var(--space-xl);">Create an Event</a>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Newsletter / Alert Signup Section -->
+    <section class="newsletter-section" id="newsletter">
+        <div class="container">
+            <div class="newsletter-box">
+                <h2>Get Weekly Event Alerts</h2>
+                <p>Choose your industries. We'll email you free events every Monday.</p>
+
+                <form id="newsletter-form" class="newsletter-form">
+                    <!-- Industry chips -->
+                    <div class="newsletter-chip-section">
+                        <p class="chip-section-label">Industries you follow</p>
+                        <div class="newsletter-interests" id="nl-industry-group">
+                            <label class="interest-chip featured">
+                                <input type="checkbox" name="nl-industry" value="" checked>
+                                <span>All Industries</span>
+                            </label>
+                            <label class="interest-chip">
+                                <input type="checkbox" name="nl-industry" value="Finance & Banking">
+                                <span>Finance & Banking</span>
+                            </label>
+                            <label class="interest-chip">
+                                <input type="checkbox" name="nl-industry" value="Healthcare & Medical">
+                                <span>Healthcare</span>
+                            </label>
+                            <label class="interest-chip">
+                                <input type="checkbox" name="nl-industry" value="Technology & IT">
+                                <span>Tech & IT</span>
+                            </label>
+                            <label class="interest-chip">
+                                <input type="checkbox" name="nl-industry" value="Engineering">
+                                <span>Engineering</span>
+                            </label>
+                            <label class="interest-chip">
+                                <input type="checkbox" name="nl-industry" value="Operations & Supply Chain">
+                                <span>Operations</span>
+                            </label>
+                            <label class="interest-chip">
+                                <input type="checkbox" name="nl-industry" value="HR & People Development">
+                                <span>HR & People</span>
+                            </label>
+                            <label class="interest-chip">
+                                <input type="checkbox" name="nl-industry" value="Marketing">
+                                <span>Marketing</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="newsletter-input-group">
+                        <input
+                            type="email"
+                            id="newsletter-email"
+                            name="email"
+                            placeholder="your@email.com"
+                            required
+                            class="newsletter-input"
+                            aria-label="Email address"
+                        >
+                        <button type="submit" class="newsletter-btn">Get My Alerts</button>
+                    </div>
+                </form>
+
+                <p id="newsletter-message" class="newsletter-message"></p>
+                <p class="newsletter-note">Weekly alerts, personalized to you. Unsubscribe anytime.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Feedback Section -->
+    <section class="feedback-section" id="feedback">
+        <div class="container">
+            <div class="feedback-box">
+                <h2>Share Your Feedback</h2>
+                <p>Have ideas, suggestions, or words of encouragement? We'd love to hear from you.</p>
+
+                <form id="feedback-form" class="feedback-form">
+                    <div id="feedback-msg" class="feedback-message"></div>
+                    <input type="text" id="feedback-name" placeholder="Your name" required class="input-field" aria-label="Your name">
+                    <input type="email" id="feedback-email" placeholder="Email (optional)" class="input-field" aria-label="Email">
+                    <textarea id="feedback-message" placeholder="Your message..." required aria-label="Message"></textarea>
+                    <button type="submit" class="btn-primary btn-full feedback-btn">Send Feedback</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <p style="margin-bottom: var(--space-md);">
+                    <a href="submit.html" style="color: var(--accent-gold); text-decoration: none; font-weight: 600;">
+                        + Create an Event — It's Free
+                    </a>
+                </p>
+                <p>&copy; 2026 Conferix Impact. All rights reserved.</p>
+                <p class="footer-note">Free online events for Sudanese professionals worldwide</p>
+                <div class="footer-links">
+                    <a href="https://conferix.com/usa/">Conferix USA</a>
+                    <a href="https://conferix.com/uae/">Conferix UAE</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Event Detail Modal -->
+    <div class="event-modal" id="event-modal">
+        <div class="modal-overlay" onclick="closeEventModal()"></div>
+        <div class="modal-sheet" onclick="event.stopPropagation()">
+            <button class="modal-close" onclick="closeEventModal()" aria-label="Close modal">&times;</button>
+            <div class="modal-body" id="modal-body">
+                <!-- Event details injected dynamically -->
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript Files -->
+    <script src="js/utils.js"></script>
+    <script src="js/eventCards.js"></script>
+    <script src="js/filters.js"></script>
+    <script src="js/modal.js"></script>
+    <script src="js/app.js"></script>
+
+</body>
+</html>

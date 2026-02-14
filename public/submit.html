@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <base href="/sudan/">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Create a free online event for Sudanese professionals. Auto-published instantly on Conferix Impact.">
+    <meta name="theme-color" content="#0B1426">
+    <title>Create an Event | Conferix Impact — Sudan</title>
+
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://conferix.com/sudan/submit.html">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://conferix.com/sudan/submit.html">
+    <meta property="og:title" content="Create an Event | Conferix Impact">
+    <meta property="og:description" content="Create a free online event for Sudanese professionals. Auto-published instantly.">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter:wght@400;500;600;700&family=Noto+Sans+Arabic:wght@400;600;700&display=swap" rel="stylesheet">
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/theme.css">
+    <link rel="stylesheet" href="css/mobile.css">
+    <link rel="stylesheet" href="css/desktop.css">
+
+    <style>
+        .submit-page {
+            min-height: 100vh;
+            background: var(--grey-light);
+        }
+
+        .submit-header {
+            background: linear-gradient(135deg, #0B1426 0%, #1C2333 25%, #1E3A5F 50%, #1C2333 75%, #0B1426 100%);
+            color: var(--white);
+            padding: var(--space-xl) 0;
+            text-align: center;
+        }
+
+        .submit-header h1 {
+            font-family: var(--font-serif);
+            font-size: var(--font-xxlarge);
+            font-weight: 400;
+            margin-bottom: var(--space-sm);
+            background: linear-gradient(135deg, #FFFFFF 0%, #D4A853 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .submit-header p {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: var(--font-base);
+        }
+
+        .back-link {
+            display: inline-block;
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            margin-bottom: var(--space-md);
+            font-size: var(--font-small);
+        }
+
+        .back-link:hover {
+            color: var(--white);
+        }
+
+        .submit-container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: var(--space-xl) var(--space-md);
+        }
+
+        .submit-form {
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            padding: var(--space-xl);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+        }
+
+        .form-group {
+            margin-bottom: var(--space-lg);
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: 600;
+            color: var(--navy-dark);
+            margin-bottom: var(--space-sm);
+            font-size: var(--font-base);
+        }
+
+        .form-group label .required {
+            color: #EF4444;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: var(--space-md);
+            border: 2px solid var(--grey-medium);
+            border-radius: var(--radius-md);
+            font-size: var(--font-base);
+            font-family: inherit;
+            transition: border-color var(--transition-base);
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary-teal);
+            box-shadow: 0 0 0 3px rgba(45, 212, 191, 0.15);
+        }
+
+        .form-group textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        .form-group small {
+            display: block;
+            color: var(--grey-dark);
+            font-size: var(--font-small);
+            margin-top: var(--space-xs);
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--space-md);
+        }
+
+        @media (max-width: 500px) {
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .submit-btn {
+            width: 100%;
+            background: linear-gradient(135deg, var(--primary-navy) 0%, var(--teal-dark) 100%);
+            color: var(--white);
+            border: none;
+            padding: var(--space-md) var(--space-xl);
+            border-radius: var(--radius-md);
+            font-size: var(--font-large);
+            font-weight: 600;
+            cursor: pointer;
+            transition: all var(--transition-base);
+            box-shadow: 0 4px 15px rgba(30, 58, 95, 0.4);
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(30, 58, 95, 0.5);
+        }
+
+        .submit-btn:disabled {
+            opacity: 0.7;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .form-message {
+            padding: var(--space-md);
+            border-radius: var(--radius-md);
+            margin-bottom: var(--space-lg);
+            display: none;
+        }
+
+        .form-message.success {
+            display: block;
+            background: rgba(16, 185, 129, 0.1);
+            color: #059669;
+            border: 1px solid rgba(16, 185, 129, 0.3);
+        }
+
+        .form-message.error {
+            display: block;
+            background: rgba(239, 68, 68, 0.1);
+            color: #DC2626;
+            border: 1px solid rgba(239, 68, 68, 0.3);
+        }
+
+        .benefits {
+            background: rgba(45, 212, 191, 0.05);
+            border: 1px solid rgba(45, 212, 191, 0.2);
+            border-radius: var(--radius-md);
+            padding: var(--space-lg);
+            margin-bottom: var(--space-xl);
+        }
+
+        .benefits h3 {
+            color: var(--navy-dark);
+            margin-bottom: var(--space-md);
+            font-size: var(--font-large);
+        }
+
+        .benefits ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .benefits li {
+            padding: var(--space-sm) 0;
+            color: var(--text-secondary);
+            display: flex;
+            align-items: center;
+            gap: var(--space-sm);
+        }
+
+        .benefits li::before {
+            content: "✓";
+            color: var(--primary-teal);
+            font-weight: bold;
+        }
+
+        .auto-publish-note {
+            background: rgba(212, 168, 83, 0.1);
+            border: 1px solid rgba(212, 168, 83, 0.3);
+            border-radius: var(--radius-md);
+            padding: var(--space-md);
+            margin-bottom: var(--space-xl);
+            text-align: center;
+            color: var(--navy-dark);
+            font-weight: 500;
+        }
+    </style>
+</head>
+<body class="submit-page">
+
+    <header class="submit-header">
+        <div class="container">
+            <a href="./" class="back-link">← Back to Events</a>
+            <h1>Create an Event</h1>
+            <p>Share a free online event with Sudanese professionals worldwide</p>
+        </div>
+    </header>
+
+    <main class="submit-container">
+
+        <div class="auto-publish-note">
+            Events are published instantly — no approval needed.
+        </div>
+
+        <div class="benefits">
+            <h3>Why create an event here?</h3>
+            <ul>
+                <li>Reach Sudanese professionals worldwide</li>
+                <li>Included in weekly email alerts</li>
+                <li>100% free — always</li>
+                <li>Published instantly</li>
+            </ul>
+        </div>
+
+        <form id="submit-form" class="submit-form">
+            <div id="form-message" class="form-message"></div>
+
+            <div class="form-group">
+                <label>Event Title <span class="required">*</span></label>
+                <input type="text" name="title" required placeholder="e.g., Financial Planning for Sudanese Professionals">
+            </div>
+
+            <div class="form-group">
+                <label>Description <span class="required">*</span></label>
+                <textarea name="description" required placeholder="Brief description of your event (2-3 sentences)"></textarea>
+                <small>What is the event about? Who should attend?</small>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label>Start Date <span class="required">*</span></label>
+                    <input type="date" name="start_date" required>
+                </div>
+                <div class="form-group">
+                    <label>End Date</label>
+                    <input type="date" name="end_date">
+                    <small>Leave blank if single-day</small>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>Start Time <span class="required">*</span></label>
+                <input type="time" name="start_time" required>
+            </div>
+
+            <div class="form-group">
+                <label>Industry <span class="required">*</span></label>
+                <select name="industry" required>
+                    <option value="">Select industry...</option>
+                    <option value="Finance & Banking">Finance & Banking</option>
+                    <option value="Healthcare & Medical">Healthcare & Medical</option>
+                    <option value="Technology & IT">Technology & IT</option>
+                    <option value="Engineering">Engineering</option>
+                    <option value="Operations & Supply Chain">Operations & Supply Chain</option>
+                    <option value="HR & People Development">HR & People Development</option>
+                    <option value="Marketing">Marketing</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>Event Link <span class="required">*</span></label>
+                <input type="url" name="event_link" required placeholder="https://zoom.us/... or https://meet.google.com/...">
+                <small>Zoom, Google Meet, Teams, or any online platform link</small>
+            </div>
+
+            <div class="form-group">
+                <label>Event Image URL</label>
+                <input type="url" name="image_url" placeholder="https://...">
+                <small>Direct link to event banner/image (optional)</small>
+            </div>
+
+            <hr style="margin: var(--space-xl) 0; border: none; border-top: 1px solid var(--grey-medium);">
+
+            <div class="form-group">
+                <label>Organizer Name <span class="required">*</span></label>
+                <input type="text" name="organizer" required placeholder="Your name or organization">
+            </div>
+
+            <div class="form-group">
+                <label>Contact Email <span class="required">*</span></label>
+                <input type="email" name="contact_email" required placeholder="your@email.com">
+                <small>Not displayed publicly — for our records only</small>
+            </div>
+
+            <button type="submit" class="submit-btn">Publish Event</button>
+
+            <p style="text-align: center; color: var(--grey-dark); font-size: var(--font-small); margin-top: var(--space-lg);">
+                All events on Conferix Impact are free and online.
+            </p>
+        </form>
+
+    </main>
+
+    <script>
+        const form = document.getElementById('submit-form');
+        const messageEl = document.getElementById('form-message');
+
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            const btn = form.querySelector('.submit-btn');
+            const originalText = btn.textContent;
+            btn.textContent = 'Publishing...';
+            btn.disabled = true;
+
+            try {
+                const formData = new FormData(form);
+                const data = {
+                    title: formData.get('title'),
+                    description: formData.get('description'),
+                    start_date: formData.get('start_date'),
+                    end_date: formData.get('end_date') || null,
+                    start_time: formData.get('start_time'),
+                    industry: formData.get('industry'),
+                    event_link: formData.get('event_link'),
+                    image_url: formData.get('image_url') || null,
+                    organizer: formData.get('organizer'),
+                    contact_email: formData.get('contact_email')
+                };
+
+                const response = await fetch('.netlify/functions/submit-event', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(data)
+                });
+
+                const result = await response.json();
+
+                if (response.ok && result.success) {
+                    messageEl.className = 'form-message success';
+                    messageEl.textContent = 'Event published! It\'s now live on the events page.';
+                    form.reset();
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                } else {
+                    throw new Error(result.error || 'Submission failed');
+                }
+
+            } catch (error) {
+                messageEl.className = 'form-message error';
+                messageEl.textContent = error.message || 'Something went wrong. Please try again.';
+            } finally {
+                btn.textContent = originalText;
+                btn.disabled = false;
+            }
+        });
+
+        // Set min date to today
+        const today = new Date().toISOString().split('T')[0];
+        document.querySelector('input[name="start_date"]').min = today;
+        document.querySelector('input[name="end_date"]').min = today;
+    </script>
+
+</body>
+</html>

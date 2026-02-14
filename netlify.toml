@@ -1,0 +1,43 @@
+# Netlify Configuration File
+
+[build]
+  command = "echo 'Static site - no build needed'"
+  publish = "public"
+  functions = "netlify/functions"
+
+[functions]
+  node_bundler = "esbuild"
+  external_node_modules = ["resend"]
+
+# Self-rewrite: allow standalone .netlify.app URL to work under /sudan/ subpath
+[[redirects]]
+  from = "/sudan/*"
+  to = "/:splat"
+  status = 200
+  force = true
+
+# Generic API wildcard
+[[redirects]]
+  from = "/api/*"
+  to = "/.netlify/functions/:splat"
+  status = 200
+
+# Headers for security
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "DENY"
+    X-Content-Type-Options = "nosniff"
+    X-XSS-Protection = "1; mode=block"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+
+# Cache static assets
+[[headers]]
+  for = "/css/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/js/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
