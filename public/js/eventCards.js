@@ -52,6 +52,7 @@ function createEventCard(event) {
 
   const title = document.createElement('h3');
   title.className = 'event-title';
+  title.dir = 'auto';
   title.textContent = truncateText(event.title, 80);
   content.appendChild(title);
 

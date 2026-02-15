@@ -129,6 +129,7 @@ function getIndustryGradient(industry) {
     'Operations & Supply Chain': 'linear-gradient(135deg, #2D3748 0%, #6366F1 100%)',
     'HR & People Development': 'linear-gradient(135deg, #2D3748 0%, #EC4899 100%)',
     'Marketing': 'linear-gradient(135deg, #1C2333 0%, #14B8A6 100%)',
+    'General': 'linear-gradient(135deg, #1C2333 0%, #64748B 100%)',
   };
   return gradients[industry] || 'linear-gradient(135deg, #142952 0%, #00875A 100%)';
 }

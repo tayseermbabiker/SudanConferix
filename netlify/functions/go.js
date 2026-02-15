@@ -40,6 +40,7 @@ function buildEventPage(ev, related) {
     'Operations & Supply Chain': 'linear-gradient(135deg, #2D3748, #6366F1)',
     'HR & People Development': 'linear-gradient(135deg, #2D3748, #EC4899)',
     'Marketing': 'linear-gradient(135deg, #1C2333, #14B8A6)',
+    'General': 'linear-gradient(135deg, #1C2333, #64748B)',
   };
   const placeholderGradient = industryGradients[industry] || 'linear-gradient(135deg, #142952, #00875A)';
 
@@ -104,7 +105,7 @@ function buildEventPage(ev, related) {
         <!-- Body -->
         <tr><td style="background:#ffffff;padding:32px 24px;">
           ${imageBanner}
-          <p style="margin:0 0 8px;font-size:24px;font-weight:700;color:#0B1426;line-height:1.3;">${title}</p>
+          <p dir="auto" style="margin:0 0 8px;font-size:24px;font-weight:700;color:#0B1426;line-height:1.3;">${title}</p>
           <p style="margin:0 0 20px;font-size:14px;color:#64748b;">${date}${endDate}${time ? ` at ${time}` : ''} &middot; Online Event</p>
 
           <table width="100%" cellpadding="0" cellspacing="0" style="margin-bottom:24px;">
@@ -113,7 +114,7 @@ function buildEventPage(ev, related) {
             ${detailRow('Industry', industry)}
           </table>
 
-          ${desc ? `<p style="margin:0 0 24px;font-size:15px;color:#374151;line-height:1.7;">${desc}</p>` : ''}
+          ${desc ? `<p dir="auto" style="margin:0 0 24px;font-size:15px;color:#374151;line-height:1.7;">${desc}</p>` : ''}
 
           <table cellpadding="0" cellspacing="0" width="100%">
             <tr><td align="center" style="padding-bottom:12px;">

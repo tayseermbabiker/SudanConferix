@@ -83,14 +83,14 @@ function buildEventModalContent(event) {
   const descriptionHtml = event.description ? `
     <div class="description">
       <strong>About this event</strong>
-      <p>${escapeHtml(event.description)}</p>
+      <p dir="auto">${escapeHtml(event.description)}</p>
     </div>` : '';
 
   const eventLink = event.event_link || '#';
 
   return `
     ${imageHtml}
-    <h2 style="margin-bottom:var(--space-md);color:var(--navy-dark);font-family:var(--font-serif);font-weight:400;">${escapeHtml(event.title)}</h2>
+    <h2 dir="auto" style="margin-bottom:var(--space-md);color:var(--navy-dark);font-family:var(--font-serif);font-weight:400;">${escapeHtml(event.title)}</h2>
     <p class="modal-subtitle">
       <strong style="color:var(--primary-teal);">${(!event.pricing || event.pricing === 'Free') ? 'FREE' : escapeHtml(event.pricing)} · ONLINE EVENT</strong>
       ${event.source ? `&nbsp;&middot;&nbsp;<span style="color:var(--grey-dark);">via ${escapeHtml(event.source)}</span>` : ''}
@@ -181,6 +181,7 @@ function getIndustryColor(industry) {
     'Operations & Supply Chain': '#6366F1',
     'HR & People Development': '#EC4899',
     'Marketing': '#14B8A6',
+    'General': '#64748B',
   };
   return colors[industry] || '#64748B';
 }
