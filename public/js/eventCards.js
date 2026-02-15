@@ -69,15 +69,15 @@ function createEventCard(event) {
   `;
   meta.appendChild(dateItem);
 
-  // Online + pricing indicator
+  // Pricing indicator
   const isFree = !event.pricing || event.pricing === 'Free';
-  const onlineItem = document.createElement('div');
-  onlineItem.className = 'event-meta-item';
-  onlineItem.innerHTML = `
-    <span class="icon">🌐</span>
-    <span>${isFree ? 'Free' : escapeHtml(event.pricing)} · Online</span>
+  const pricingItem = document.createElement('div');
+  pricingItem.className = 'event-meta-item';
+  pricingItem.innerHTML = `
+    <span class="icon">${isFree ? '🎟️' : '💰'}</span>
+    <span>${isFree ? 'Free' : escapeHtml(event.pricing)}</span>
   `;
-  meta.appendChild(onlineItem);
+  meta.appendChild(pricingItem);
 
   content.appendChild(meta);
 
