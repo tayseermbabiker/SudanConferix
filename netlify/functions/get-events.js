@@ -21,8 +21,10 @@ exports.handler = async (event, context) => {
     const month = params.month;
     const industry = params.industry;
 
-    // Only show events with start_date in the future
-    let filterFormula = 'AND(IS_AFTER({start_date}, NOW())';
+    // Show events today and in the future
+    const today = new Date().toISOString().split('T')[0];
+    let filterFormula = `AND({start_date} >= "${today}"`;
+
 
     if (month) {
       filterFormula += `, IS_SAME(DATETIME_PARSE({start_date}), DATETIME_PARSE("${month}-01"), "month")`;
