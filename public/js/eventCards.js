@@ -68,12 +68,13 @@ function createEventCard(event) {
   `;
   meta.appendChild(dateItem);
 
-  // Online indicator
+  // Online + pricing indicator
+  const isFree = !event.pricing || event.pricing === 'Free';
   const onlineItem = document.createElement('div');
   onlineItem.className = 'event-meta-item';
   onlineItem.innerHTML = `
     <span class="icon">🌐</span>
-    <span>Free Online Event</span>
+    <span>${isFree ? 'Free' : escapeHtml(event.pricing)} · Online</span>
   `;
   meta.appendChild(onlineItem);
 
@@ -149,7 +150,7 @@ function injectJsonLd(events) {
         'startDate': evt.start_date,
         'eventStatus': 'https://schema.org/EventScheduled',
         'eventAttendanceMode': 'https://schema.org/OnlineEventAttendanceMode',
-        'isAccessibleForFree': true,
+        'isAccessibleForFree': !evt.pricing || evt.pricing === 'Free',
       }
     };
 
@@ -167,10 +168,11 @@ function injectJsonLd(events) {
       e.organizer = { '@type': 'Organization', 'name': evt.organizer };
     }
 
+    const evtFree = !evt.pricing || evt.pricing === 'Free';
     e.offers = {
       '@type': 'Offer',
-      'price': '0',
-      'priceCurrency': 'USD',
+      'price': evtFree ? '0' : evt.pricing,
+      'priceCurrency': evtFree ? 'USD' : '',
       'availability': 'https://schema.org/InStock',
     };
 

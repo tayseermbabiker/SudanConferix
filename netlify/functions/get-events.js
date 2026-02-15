@@ -53,7 +53,8 @@ exports.handler = async (event, context) => {
       industry: record.get('industry'),
       event_link: record.get('event_link'),
       image_url: record.get('image_url'),
-      source: record.get('source')
+      source: record.get('source'),
+      pricing: record.get('pricing') || 'Free'
     }));
 
     return {

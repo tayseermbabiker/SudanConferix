@@ -92,7 +92,7 @@ function buildEventModalContent(event) {
     ${imageHtml}
     <h2 style="margin-bottom:var(--space-md);color:var(--navy-dark);font-family:var(--font-serif);font-weight:400;">${escapeHtml(event.title)}</h2>
     <p class="modal-subtitle">
-      <strong style="color:var(--primary-teal);">FREE ONLINE EVENT</strong>
+      <strong style="color:var(--primary-teal);">${(!event.pricing || event.pricing === 'Free') ? 'FREE' : escapeHtml(event.pricing)} · ONLINE EVENT</strong>
       ${event.source ? `&nbsp;&middot;&nbsp;<span style="color:var(--grey-dark);">via ${escapeHtml(event.source)}</span>` : ''}
     </p>
     <div class="modal-event-meta">
@@ -103,7 +103,7 @@ function buildEventModalContent(event) {
       </div>
       <div class="meta-block">
         <strong>Format</strong>
-        <p>Free Online Event</p>
+        <p>${(!event.pricing || event.pricing === 'Free') ? 'Free' : escapeHtml(event.pricing)} · Online</p>
       </div>
       ${organizerHtml}
       <div class="meta-block">

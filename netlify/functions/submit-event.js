@@ -72,6 +72,7 @@ exports.handler = async (event) => {
       industry: data.industry,
       event_link: data.event_link,
       image_url: data.image_url || '',
+      pricing: data.pricing || 'Free',
       organizer: data.organizer,
       contact_email: data.contact_email,
       is_user_submitted: true,

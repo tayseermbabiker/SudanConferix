@@ -309,6 +309,22 @@
             </div>
 
             <div class="form-group">
+                <label>Event Pricing <span class="required">*</span></label>
+                <div style="display: flex; gap: var(--space-md); margin-bottom: var(--space-sm);">
+                    <label style="display: flex; align-items: center; gap: 6px; cursor: pointer; font-weight: 400;">
+                        <input type="radio" name="pricing_type" value="free" checked onchange="document.getElementById('price-field').style.display='none'"> Free
+                    </label>
+                    <label style="display: flex; align-items: center; gap: 6px; cursor: pointer; font-weight: 400;">
+                        <input type="radio" name="pricing_type" value="paid" onchange="document.getElementById('price-field').style.display='block'"> Paid
+                    </label>
+                </div>
+                <div id="price-field" style="display: none;">
+                    <input type="text" name="pricing" placeholder="e.g. 50 USD, 5000 SDG, 20 EUR">
+                    <small>Include the currency code (USD, SDG, EUR, etc.). Payments are managed directly by the organizer.</small>
+                </div>
+            </div>
+
+            <div class="form-group">
                 <label>Event Link <span class="required">*</span></label>
                 <input type="url" name="event_link" required placeholder="Paste your Zoom registration link, Eventbrite page, or meeting link">
                 <small>Tip: Use a registration link (not a direct join link) so you can track attendees</small>
@@ -356,6 +372,13 @@
 
             try {
                 const formData = new FormData(form);
+                const pricingType = formData.get('pricing_type');
+                const pricing = pricingType === 'free' ? 'Free' : (formData.get('pricing') || '').trim();
+
+                if (pricingType === 'paid' && !pricing) {
+                    throw new Error('Please enter the price with currency code.');
+                }
+
                 const data = {
                     title: formData.get('title'),
                     description: formData.get('description'),
@@ -363,6 +386,7 @@
                     end_date: formData.get('end_date') || null,
                     start_time: formData.get('start_time'),
                     industry: formData.get('industry'),
+                    pricing: pricing,
                     event_link: formData.get('event_link'),
                     image_url: formData.get('image_url') || null,
                     organizer: formData.get('organizer'),

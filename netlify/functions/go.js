@@ -21,6 +21,8 @@ function buildEventPage(ev, related) {
   const industry = ev.industry || '';
   const eventLink = ev.event_link || '';
   const imageUrl = ev.image_url || '';
+  const isFree = !ev.pricing || ev.pricing === 'Free';
+  const pricingDisplay = isFree ? 'Free' : ev.pricing;
 
   // Google Calendar link
   const calStart = (ev.start_date || '').replace(/-/g, '');
@@ -80,7 +82,7 @@ function buildEventPage(ev, related) {
       "url": "${eventLink.replace(/"/g, '\\"')}"
     },
     ${organizer ? `"organizer": { "@type": "Organization", "name": "${organizer.replace(/"/g, '\\"')}" },` : ''}
-    "isAccessibleForFree": true
+    "isAccessibleForFree": ${isFree}
   }
   </script>
 </head>
@@ -106,7 +108,7 @@ function buildEventPage(ev, related) {
           <p style="margin:0 0 20px;font-size:14px;color:#64748b;">${date}${endDate}${time ? ` at ${time}` : ''} &middot; Online Event</p>
 
           <table width="100%" cellpadding="0" cellspacing="0" style="margin-bottom:24px;">
-            ${detailRow('Format', 'Free Online Event')}
+            ${detailRow('Format', `${pricingDisplay} · Online Event`)}
             ${detailRow('Organizer', organizer)}
             ${detailRow('Industry', industry)}
           </table>
@@ -165,6 +167,7 @@ exports.handler = async (event) => {
       industry: record.get('industry'),
       event_link: record.get('event_link'),
       image_url: record.get('image_url'),
+      pricing: record.get('pricing') || 'Free',
     };
 
     // Fetch related events (same industry, upcoming, max 5)
