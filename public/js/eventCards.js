@@ -69,43 +69,13 @@ function createEventCard(event) {
   `;
   meta.appendChild(dateItem);
 
-  // Pricing indicator
-  const isFree = !event.pricing || event.pricing === 'Free';
-  const pricingItem = document.createElement('div');
-  pricingItem.className = 'event-meta-item';
-  pricingItem.innerHTML = `
-    <span class="icon">${isFree ? '🎟️' : '💰'}</span>
-    <span>${isFree ? 'Free' : escapeHtml(event.pricing)}</span>
-  `;
-  meta.appendChild(pricingItem);
-
   content.appendChild(meta);
-
-  // Organizer
-  if (event.organizer) {
-    const organizer = document.createElement('p');
-    organizer.className = 'event-organizer';
-    organizer.textContent = `By ${escapeHtml(event.organizer)}`;
-    content.appendChild(organizer);
-  }
 
   // View details hint
   const detailsHint = document.createElement('p');
   detailsHint.className = 'view-details-hint';
   detailsHint.textContent = 'View details \u2192';
   content.appendChild(detailsHint);
-
-  // Join Event button
-  const joinBtn = document.createElement('button');
-  joinBtn.className = 'btn-primary btn-full';
-  joinBtn.textContent = 'Join Event';
-  joinBtn.onclick = (e) => {
-    e.stopPropagation();
-    if (event.event_link) {
-      window.open(event.event_link, '_blank', 'noopener,noreferrer');
-    }
-  };
-  content.appendChild(joinBtn);
 
   card.appendChild(content);
 

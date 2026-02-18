@@ -414,7 +414,9 @@ body {
   z-index: 2;
   box-shadow: 0 2px 8px rgba(0,0,0,0.2);
 }
-.event-card-content { padding: 20px; }
+.event-card { display: flex; flex-direction: column; }
+.event-card-content { padding: 20px; flex: 1; display: flex; flex-direction: column; }
+.event-card-content .view-details-hint { margin-top: auto; }
 .event-title {
   font-family: var(--font-serif);
   font-size: 20px;
