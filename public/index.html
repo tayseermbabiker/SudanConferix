@@ -152,73 +152,24 @@
         </div>
     </main>
 
-    <!-- Newsletter / Alert Signup Section -->
+    <!-- CTA Section -->
     <section class="newsletter-section" id="newsletter">
         <div class="container">
             <div class="newsletter-box">
-                <h2>Get Weekly Event Alerts</h2>
-                <p>Choose your industries. We'll email you curated events every Monday.</p>
+                <h2>Never Miss an Event</h2>
+                <p>Sign up and get curated events by your industry interest, delivered every Monday.</p>
 
-                <form id="newsletter-form" class="newsletter-form">
-                    <!-- Industry chips -->
-                    <div class="newsletter-chip-section">
-                        <p class="chip-section-label">Industries you follow</p>
-                        <div class="newsletter-interests" id="nl-industry-group">
-                            <label class="interest-chip featured">
-                                <input type="checkbox" name="nl-industry" value="" checked>
-                                <span>All Industries</span>
-                            </label>
-                            <label class="interest-chip">
-                                <input type="checkbox" name="nl-industry" value="Finance & Banking">
-                                <span>Finance & Banking</span>
-                            </label>
-                            <label class="interest-chip">
-                                <input type="checkbox" name="nl-industry" value="Healthcare & Medical">
-                                <span>Healthcare</span>
-                            </label>
-                            <label class="interest-chip">
-                                <input type="checkbox" name="nl-industry" value="Technology & IT">
-                                <span>Tech & IT</span>
-                            </label>
-                            <label class="interest-chip">
-                                <input type="checkbox" name="nl-industry" value="Engineering">
-                                <span>Engineering</span>
-                            </label>
-                            <label class="interest-chip">
-                                <input type="checkbox" name="nl-industry" value="Operations & Supply Chain">
-                                <span>Operations</span>
-                            </label>
-                            <label class="interest-chip">
-                                <input type="checkbox" name="nl-industry" value="HR & People Development">
-                                <span>HR & People</span>
-                            </label>
-                            <label class="interest-chip">
-                                <input type="checkbox" name="nl-industry" value="Marketing">
-                                <span>Marketing</span>
-                            </label>
-                            <label class="interest-chip">
-                                <input type="checkbox" name="nl-industry" value="General">
-                                <span>General</span>
-                            </label>
-                        </div>
-                    </div>
-
+                <form id="newsletter-form" class="newsletter-form" style="max-width:360px;margin:var(--space-lg) auto 0;">
                     <div class="newsletter-input-group">
-                        <input
-                            type="email"
-                            id="newsletter-email"
-                            name="email"
-                            placeholder="your@email.com"
-                            required
-                            class="newsletter-input"
-                            aria-label="Email address"
-                        >
-                        <button type="submit" class="newsletter-btn">Get My Alerts</button>
+                        <input type="email" id="newsletter-email" name="email" placeholder="your@email.com" required class="newsletter-input" aria-label="Email address">
+                        <button type="submit" class="newsletter-btn">Sign Up</button>
                     </div>
                 </form>
-
                 <p id="newsletter-message" class="newsletter-message"></p>
-                <p class="newsletter-note">Weekly alerts, personalized to you. Unsubscribe anytime.</p>
+
+                <div style="margin-top:var(--space-lg);">
+                    <a href="/sudan/submit.html" class="hero-cta-secondary" style="display:inline-block;text-align:center;">Create an Event</a>
+                </div>
             </div>
         </div>
     </section>

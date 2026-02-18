@@ -4,9 +4,6 @@ async function initApp() {
   // Initialize filters
   initializeFilters();
 
-  // Setup newsletter chip toggles (industries only)
-  setupChipToggle('nl-industry-group', 'nl-industry');
-
   // Setup newsletter form handler
   setupNewsletterForm();
 
@@ -26,7 +23,7 @@ function setupNewsletterForm() {
     const email = document.getElementById('newsletter-email').value.trim();
     if (!email) return;
 
-    const industries = getChipValues('nl-industry');
+    const industries = '';
     const btn = form.querySelector('.newsletter-btn');
     const msgEl = document.getElementById('newsletter-message');
     const originalText = btn.textContent;
