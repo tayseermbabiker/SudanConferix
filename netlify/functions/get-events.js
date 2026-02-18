@@ -7,7 +7,7 @@ exports.handler = async (event, context) => {
     'Access-Control-Allow-Headers': 'Content-Type',
     'Access-Control-Allow-Methods': 'GET, OPTIONS',
     'Content-Type': 'application/json',
-    'Cache-Control': 'public, max-age=600'
+    'Cache-Control': 'public, max-age=86400'
   };
 
   if (event.httpMethod === 'OPTIONS') {
