@@ -56,7 +56,7 @@ function buildDigestEmail(subscriber, events, dateFrom, dateTo) {
         </td></tr>
         <!-- Body -->
         <tr><td style="background:#ffffff;padding:32px 24px;">
-          <p style="margin:0 0 8px;font-size:22px;font-weight:600;color:#0B1426;">Hey ${name}, your events are here!</p>
+          <p style="margin:0 0 8px;font-size:22px;font-weight:600;color:#0B1426;">Hey ${name}, plan your week!</p>
           <p style="margin:0 0 24px;font-size:15px;color:#64748b;line-height:1.6;">We found <strong style="color:#0B1426;">${count} free online event${count !== 1 ? 's' : ''}</strong> matching your preferences for ${fromLabel} — ${toLabel}.</p>
 
           <table width="100%" cellpadding="0" cellspacing="0">
@@ -102,13 +102,15 @@ exports.handler = async (event) => {
     }
 
     const today = new Date();
-    const twoWeeks = new Date(today);
-    twoWeeks.setDate(twoWeeks.getDate() + 14);
-    const todayStr = today.toISOString().split('T')[0];
-    const twoWeeksStr = twoWeeks.toISOString().split('T')[0];
+    const monday = new Date(today);
+    monday.setDate(monday.getDate() + 1);
+    const sunday = new Date(today);
+    sunday.setDate(sunday.getDate() + 7);
+    const mondayStr = monday.toISOString().split('T')[0];
+    const sundayStr = sunday.toISOString().split('T')[0];
 
     const allEvents = await EVENTS.select({
-      filterByFormula: `AND({start_date} >= "${todayStr}", {start_date} <= "${twoWeeksStr}")`,
+      filterByFormula: `AND({start_date} >= "${mondayStr}", {start_date} <= "${sundayStr}")`,
       sort: [{ field: 'start_date', direction: 'asc' }],
     }).all();
 
@@ -147,11 +149,11 @@ exports.handler = async (event) => {
         const html = buildDigestEmail(
           { first_name: firstName, unsubscribe_token: unsubToken },
           matched,
-          todayStr,
-          twoWeeksStr,
+          mondayStr,
+          sundayStr,
         );
 
-        const subject = `Your Weekly Events — ${formatDate(todayStr)} to ${formatDate(twoWeeksStr)}`;
+        const subject = `This Week's Events — ${formatDate(mondayStr)} to ${formatDate(sundayStr)}`;
 
         await resend.emails.send({
           from: 'Conferix Impact <alerts@conferix.com>',
@@ -161,7 +163,7 @@ exports.handler = async (event) => {
         });
 
         await SUBSCRIBERS.update(sub.id, {
-          last_alerted_at: todayStr,
+          last_alerted_at: mondayStr,
         });
 
         sent++;
