@@ -106,7 +106,7 @@ function buildEventPage(ev, related) {
         <tr><td style="background:#ffffff;padding:32px 24px;">
           ${imageBanner}
           <p dir="auto" style="margin:0 0 8px;font-size:24px;font-weight:700;color:#0B1426;line-height:1.3;">${title}</p>
-          <p style="margin:0 0 20px;font-size:14px;color:#64748b;">${date}${endDate}${time ? ` at ${time}` : ''} &middot; Online Event</p>
+          <p style="margin:0 0 20px;font-size:14px;color:#64748b;">${date}${endDate}${time ? ` at ${time} <span style="color:#DC2626;font-weight:600;">Sudan Time</span>` : ''} &middot; Online Event</p>
 
           <table width="100%" cellpadding="0" cellspacing="0" style="margin-bottom:24px;">
             ${detailRow('Pricing', pricingDisplay)}
