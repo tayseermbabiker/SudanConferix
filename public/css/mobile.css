@@ -632,6 +632,35 @@ body {
   min-height: var(--touch-target);
 }
 .input-field:focus { border-color: var(--primary-teal); box-shadow: 0 0 0 3px rgba(45,212,191,0.1); }
+
+/* ===== PREFERENCE CHIPS ===== */
+.alert-prefs-group { margin-bottom: var(--space-md); }
+.chip-grid { display: flex; flex-wrap: wrap; gap: var(--space-xs); }
+.pref-chip { cursor: pointer; }
+.pref-chip input { display: none; }
+.pref-chip span {
+  display: inline-block;
+  padding: 6px 12px;
+  background: rgba(255,255,255,0.1);
+  border: 1.5px solid rgba(255,255,255,0.25);
+  border-radius: var(--radius-md);
+  color: rgba(255,255,255,0.7);
+  font-size: var(--font-small);
+  transition: all var(--transition-base);
+  white-space: nowrap;
+}
+.pref-chip:hover span {
+  border-color: var(--primary-teal);
+  background: rgba(45,212,191,0.1);
+}
+.pref-chip input:checked + span {
+  background: var(--teal-dark);
+  border-color: transparent;
+  color: var(--white);
+  font-weight: 500;
+  box-shadow: 0 2px 8px rgba(26,158,143,0.3);
+}
+
 .message { padding: var(--space-md); border-radius: var(--radius-md); margin-top: var(--space-md); font-size: var(--font-small); text-align: center; }
 .message.success { background: #e3fcef; color: var(--success); border: 1px solid var(--success); }
 .message.error { background: #ffebe6; color: var(--error); border: 1px solid var(--error); }

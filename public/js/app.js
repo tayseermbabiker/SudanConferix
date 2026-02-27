@@ -18,12 +18,16 @@ function setupNewsletterForm() {
   const form = document.getElementById('newsletter-form');
   if (!form) return;
 
+  setupChipToggle('subscribe-industry-prefs', 'sub-industry');
+
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
     const email = document.getElementById('newsletter-email').value.trim();
+    const firstName = (document.getElementById('newsletter-name').value || '').trim();
     if (!email) return;
 
-    const industries = '';
+    const industryChecked = Array.from(form.querySelectorAll('input[name="sub-industry"]:checked')).map(cb => cb.value).filter(Boolean);
+    const industries = industryChecked.length > 0 ? industryChecked.join(', ') : 'All Industries';
     const btn = form.querySelector('.newsletter-btn');
     const msgEl = document.getElementById('newsletter-message');
     const originalText = btn.textContent;
@@ -35,7 +39,7 @@ function setupNewsletterForm() {
       const res = await fetch('.netlify/functions/subscribe', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email, industries }),
+        body: JSON.stringify({ email, first_name: firstName, industries }),
       });
       const data = await res.json();
 
@@ -45,6 +49,7 @@ function setupNewsletterForm() {
           msgEl.textContent = data.message;
         }
         document.getElementById('newsletter-email').value = '';
+        document.getElementById('newsletter-name').value = '';
       } else {
         throw new Error(data.error || 'Subscription failed');
       }

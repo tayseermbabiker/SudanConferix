@@ -173,11 +173,25 @@
                 <h2>Never Miss an Event</h2>
                 <p>Sign up and get curated events by your industry interest, delivered every Monday.</p>
 
-                <form id="newsletter-form" class="newsletter-form" style="max-width:360px;margin:var(--space-lg) auto 0;">
-                    <div class="newsletter-input-group">
-                        <input type="email" id="newsletter-email" name="email" placeholder="your@email.com" required class="newsletter-input" aria-label="Email address">
-                        <button type="submit" class="newsletter-btn">Sign Up</button>
+                <form id="newsletter-form" class="newsletter-form" style="max-width:420px;margin:var(--space-lg) auto 0;">
+                    <input type="text" id="newsletter-name" name="first_name" placeholder="Your name" required class="input-field" aria-label="Your name" style="margin-bottom:var(--space-sm);">
+                    <input type="email" id="newsletter-email" name="email" placeholder="your@email.com" required class="input-field" aria-label="Email address" style="margin-bottom:var(--space-md);">
+
+                    <div class="alert-prefs-group" id="subscribe-industry-prefs">
+                        <p class="prefs-label" style="color:rgba(255,255,255,0.85);font-size:14px;font-weight:600;margin-bottom:var(--space-sm);">Industries you follow</p>
+                        <div class="chip-grid">
+                            <label class="pref-chip"><input type="checkbox" name="sub-industry" value="" checked><span>All Industries</span></label>
+                            <label class="pref-chip"><input type="checkbox" name="sub-industry" value="Finance & Banking"><span>Finance & Banking</span></label>
+                            <label class="pref-chip"><input type="checkbox" name="sub-industry" value="Healthcare & Medical"><span>Healthcare & Medical</span></label>
+                            <label class="pref-chip"><input type="checkbox" name="sub-industry" value="Technology & IT"><span>Technology & IT</span></label>
+                            <label class="pref-chip"><input type="checkbox" name="sub-industry" value="Engineering"><span>Engineering</span></label>
+                            <label class="pref-chip"><input type="checkbox" name="sub-industry" value="Operations & Supply Chain"><span>Operations & Supply Chain</span></label>
+                            <label class="pref-chip"><input type="checkbox" name="sub-industry" value="HR & People Development"><span>HR & People Development</span></label>
+                            <label class="pref-chip"><input type="checkbox" name="sub-industry" value="Marketing"><span>Marketing</span></label>
+                        </div>
                     </div>
+
+                    <button type="submit" class="newsletter-btn" style="margin-top:var(--space-md);width:100%;">Get My Alerts</button>
                 </form>
                 <p id="newsletter-message" class="newsletter-message"></p>
 
