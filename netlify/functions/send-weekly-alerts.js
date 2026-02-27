@@ -125,52 +125,66 @@ exports.handler = async (event) => {
     }));
 
     let sent = 0, skipped = 0, errors = 0;
+    const subject = `This Week's Events — ${formatDate(mondayStr)} to ${formatDate(sundayStr)}`;
 
+    // Build send tasks for all matching subscribers
+    const sendTasks = [];
     for (const sub of subscribers) {
-      try {
-        const email = sub.get('email');
-        const firstName = sub.get('first_name') || '';
-        const industriesPref = sub.get('industries') || 'All Industries';
-        const unsubToken = sub.get('unsubscribe_token') || '';
+      const email = sub.get('email');
+      const firstName = sub.get('first_name') || '';
+      const industriesPref = sub.get('industries') || 'All Industries';
+      const unsubToken = sub.get('unsubscribe_token') || '';
 
-        const industryList = industriesPref.split(',').map(s => s.trim()).filter(Boolean);
-        const allIndustries = industryList.some(i => i === 'All Industries');
+      const industryList = industriesPref.split(',').map(s => s.trim()).filter(Boolean);
+      const allIndustries = industryList.some(i => i === 'All Industries');
 
-        // Industry-only matching (no city filter — all online)
-        const matched = events.filter(ev => {
-          return allIndustries || industryList.includes(ev.industry);
-        });
+      // Industry-only matching (no city filter — all online)
+      const matched = events.filter(ev => {
+        return allIndustries || industryList.includes(ev.industry);
+      });
 
-        if (matched.length === 0) {
-          skipped++;
-          continue;
-        }
+      if (matched.length === 0) {
+        skipped++;
+        continue;
+      }
 
-        const html = buildDigestEmail(
-          { first_name: firstName, unsubscribe_token: unsubToken },
-          matched,
-          mondayStr,
-          sundayStr,
-        );
+      const html = buildDigestEmail(
+        { first_name: firstName, unsubscribe_token: unsubToken },
+        matched,
+        mondayStr,
+        sundayStr,
+      );
 
-        const subject = `This Week's Events — ${formatDate(mondayStr)} to ${formatDate(sundayStr)}`;
+      sendTasks.push({ sub, email, html });
+    }
 
-        await resend.emails.send({
+    // Send all emails in parallel
+    const results = await Promise.allSettled(
+      sendTasks.map(({ email, html }) =>
+        resend.emails.send({
           from: 'Conferix Impact <alerts@conferix.com>',
           to: email,
           subject,
           html,
-        });
+        })
+      )
+    );
 
-        await SUBSCRIBERS.update(sub.id, {
-          last_alerted_at: mondayStr,
-        });
-
+    // Batch-update last_alerted_at only for successful sends (max 10 per Airtable call)
+    const successIds = [];
+    results.forEach((result, i) => {
+      if (result.status === 'fulfilled') {
         sent++;
-      } catch (err) {
-        console.error(`Failed to send to ${sub.get('email')}:`, err.message);
+        successIds.push(sendTasks[i].sub.id);
+      } else {
+        console.error(`Failed to send to ${sendTasks[i].email}:`, result.reason?.message);
         errors++;
       }
+    });
+
+    for (let i = 0; i < successIds.length; i += 10) {
+      const batch = successIds.slice(i, i + 10);
+      await SUBSCRIBERS.update(batch.map(id => ({ id, fields: { last_alerted_at: mondayStr } })));
     }
 
     return {
