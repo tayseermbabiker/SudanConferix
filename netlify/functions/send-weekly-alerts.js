@@ -158,29 +158,40 @@ exports.handler = async (event) => {
       sendTasks.push({ sub, email, html });
     }
 
-    // Send all emails in parallel
-    const results = await Promise.allSettled(
-      sendTasks.map(({ email, html }) =>
-        resend.emails.send({
-          from: 'Conferix Impact <alerts@conferix.com>',
-          to: email,
-          subject,
-          html,
-        })
-      )
-    );
-
-    // Batch-update last_alerted_at only for successful sends (max 10 per Airtable call)
+    // Send emails via Resend batch API (up to 100 per call)
     const successIds = [];
-    results.forEach((result, i) => {
-      if (result.status === 'fulfilled') {
-        sent++;
-        successIds.push(sendTasks[i].sub.id);
-      } else {
-        console.error(`Failed to send to ${sendTasks[i].email}:`, result.reason?.message);
-        errors++;
+    for (let i = 0; i < sendTasks.length; i += 100) {
+      const batch = sendTasks.slice(i, i + 100);
+      const batchPayload = batch.map(({ email, html }) => ({
+        from: 'Conferix Impact <alerts@conferix.com>',
+        to: email,
+        subject,
+        html,
+      }));
+
+      try {
+        const { data, error } = await resend.batch.send(batchPayload);
+        if (error) {
+          console.error('Batch send error:', error);
+          errors += batch.length;
+        } else {
+          // data.data is array of { id } for each sent email
+          const results = data?.data || [];
+          results.forEach((result, j) => {
+            if (result.id) {
+              sent++;
+              successIds.push(batch[j].sub.id);
+            } else {
+              console.error(`No ID returned for ${batch[j].email}`);
+              errors++;
+            }
+          });
+        }
+      } catch (err) {
+        console.error('Batch send exception:', err.message);
+        errors += batch.length;
       }
-    });
+    }
 
     for (let i = 0; i < successIds.length; i += 10) {
       const batch = successIds.slice(i, i + 10);
