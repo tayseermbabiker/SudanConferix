@@ -62,7 +62,7 @@ function createEventCard(event) {
   // Date + time
   const dateItem = document.createElement('div');
   dateItem.className = 'event-meta-item';
-  const timeText = event.start_time ? ` at ${event.start_time}` : '';
+  const timeText = event.start_time ? ` at ${event.start_time} <span style="color:#DC2626;font-weight:600;">Sudan Time</span>` : '';
   dateItem.innerHTML = `
     <span class="icon">📅</span>
     <span>${formatDate(event.start_date)}${timeText}</span>

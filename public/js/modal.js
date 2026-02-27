@@ -98,7 +98,7 @@ function buildEventModalContent(event) {
     <div class="modal-event-meta">
       <div class="meta-block">
         <strong>Date</strong>
-        <p>${startDate}${event.start_time ? ` at ${event.start_time}` : ''}</p>
+        <p>${startDate}${event.start_time ? ` at ${event.start_time} <span style="color:#DC2626;font-weight:600;">Sudan Time</span>` : ''}</p>
         ${endDate ? `<p>to ${endDate}</p>` : ''}
       </div>
       <div class="meta-block">
