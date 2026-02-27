@@ -125,7 +125,7 @@ exports.handler = async (event) => {
     }));
 
     let sent = 0, skipped = 0, errors = 0;
-    const subject = `This Week's Events — ${formatDate(mondayStr)} to ${formatDate(sundayStr)}`;
+    const subject = `This Week's Free Events — Conferix Impact — ${formatDate(mondayStr)} to ${formatDate(sundayStr)}`;
 
     // Build send tasks for all matching subscribers
     const sendTasks = [];
