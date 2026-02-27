@@ -537,14 +537,15 @@ body {
 }
 
 /* ===== MODAL ===== */
-.event-modal {
+.event-modal, .login-modal {
   display: none;
   position: fixed;
   top: 0; left: 0;
   width: 100%; height: 100%;
   z-index: 1000;
 }
-.event-modal.active { display: block; }
+.event-modal.active, .login-modal.active { display: block; }
+.modal-small { max-height: 85vh; }
 .modal-overlay {
   position: absolute;
   top: 0; left: 0;
@@ -635,7 +636,7 @@ body {
 
 /* ===== PREFERENCE CHIPS ===== */
 .alert-prefs-group { margin-bottom: var(--space-md); }
-.chip-grid { display: flex; flex-wrap: wrap; gap: var(--space-xs); }
+.chip-grid { display: flex; flex-wrap: wrap; gap: var(--space-xs); justify-content: center; }
 .pref-chip { cursor: pointer; }
 .pref-chip input { display: none; }
 .pref-chip span {
